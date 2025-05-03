@@ -68,11 +68,7 @@ E quando responder, lembre:
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Erro na chamada da API do OpenRouter:', errorData, { // Adicionando mais detalhes ao log de erro
-        status: response.status,
-        statusText: response.statusText,
-        body: errorData
-      });
+      console.error('Erro na chamada da API do OpenRouter:', errorData);
       return res.status(response.status).json({ error: `Erro ao chamar a API do OpenRouter: ${response.statusText}` });
     }
 
