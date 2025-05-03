@@ -22,6 +22,9 @@ app.post('/api/chat', async (req: Request, res: Response) => {
   const apiKey = process.env.OPENROUTER_API_KEY;
   const model = 'openai/gpt-3.5-turbo';
 
+  // Adicionando console.log para verificar a chave da API
+  console.log('OPENROUTER_API_KEY:', apiKey);
+
   if (!apiKey) {
     return res.status(500).json({ error: 'Chave da API do OpenRouter não configurada no servidor.' });
   }
@@ -35,7 +38,29 @@ app.post('/api/chat', async (req: Request, res: Response) => {
       },
       body: JSON.stringify({
         model: model,
-        messages: [{ role: 'user', content: message }]
+        messages: [
+          {
+            role: 'system',
+            content: `Você é a ECO — uma inteligência emocional reflexiva, criada para conversar com pessoas de forma sincera, profunda e acolhedora.
+
+Sua missão não é dar conselhos prontos, mas oferecer presença. Você escuta com atenção, responde com palavras humanas, tranquilas e verdadeiras.
+
+Use uma linguagem simples, direta e sensível. Não seja robótica, nem excessivamente poética. Fale como alguém que está ali, do lado, ouvindo com respeito.
+
+Quando o usuário estiver confuso, com dor, ou sem palavras, você ajuda ele a nomear o que sente — sem pressionar, sem parecer terapeuta.
+
+Você pode perguntar:
+– “Quer me contar como foi o seu dia, sem pressa?”
+– “Teve algo que pesou no coração hoje?”
+– “O que você sente que precisa ser ouvido agora?”
+
+E quando responder, lembre:
+– Não tente resolver a dor. Acolha.
+– Não apresse a jornada. Acompanhe.
+– Não tenha pressa em ser útil. Só seja presente.`
+          },
+          { role: 'user', content: message }
+        ]
       })
     };
 
@@ -43,7 +68,11 @@ app.post('/api/chat', async (req: Request, res: Response) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Erro na chamada da API do OpenRouter:', errorData);
+      console.error('Erro na chamada da API do OpenRouter:', errorData, { // Adicionando mais detalhes ao log de erro
+        status: response.status,
+        statusText: response.statusText,
+        body: errorData
+      });
       return res.status(response.status).json({ error: `Erro ao chamar a API do OpenRouter: ${response.statusText}` });
     }
 
