@@ -17,13 +17,14 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.post('/api/chat', async (req: Request, res: Response) => {
+app.post('/api/chat', async (req: express.Request, res: express.Response) => {
     const { message } = req.body;
     const apiKey = process.env.OPENROUTER_API_KEY;
-    const model = 'openai/gpt-3.5-turbo';
+    const model = 'mistralai/mistral-tiny'; // Alterado para um modelo gratuito
 
     // Imprime a chave da API para verificação
     console.log('OPENROUTER_API_KEY:', apiKey);
+    console.log('Modelo sendo usado:', model); // Adicionado para verificar o modelo
 
     // Verifica se a chave da API está configurada
     if (!apiKey) {
