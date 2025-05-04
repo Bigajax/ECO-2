@@ -31,10 +31,11 @@ app.post('/api/chat', async (req: Request, res: Response) => {
     }
 
     try {
+        console.log('Iniciando chamada para OpenRouter...');
         const requestOptions: RequestInit = {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${apiKey}`,  // Usa a chave da API
+                'Authorization': `Bearer ${apiKey}`,   // Usa a chave da API
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -66,25 +67,27 @@ E quando responder, lembre:
         };
 
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', requestOptions);
+        console.log('Chamada para OpenRouter concluída. Status:', response.status);
 
-        // Verifica se a chamada para o OpenRouter foi bem-sucedida
         if (!response.ok) {
             const errorData = await response.json();
             console.error('Erro na chamada da API do OpenRouter:', errorData);
             return res.status(response.status).json({
                 error: `Erro ao chamar a API do OpenRouter: ${response.statusText}`,
-                details: errorData, // Inclui detalhes do erro
+                details: errorData,
             });
         }
 
+        console.log('Processando resposta JSON...');
         const data = (await response.json()) as OpenRouterResponse;
-        console.log("Resposta da API do OpenRouter:", data); // Imprime a resposta completa para debug
+        console.log("Resposta da API do OpenRouter:", data);
         const resposta = data.choices[0]?.message?.content || "Sem resposta do modelo.";
         res.setHeader('Content-Type', 'application/json');
-        res.json(resposta); // Envia a resposta do modelo
+        console.log('Enviando resposta para o cliente:', resposta);
+        res.json(resposta);
     } catch (error: any) {
-        console.error('Erro ao processar a requisição:', error);
-        res.status(500).json({ error: 'Erro interno do servidor: ' + error.message }); // Envia a mensagem de erro original
+        console.error('Erro ao processar a requisição (dentro do try):', error);
+        res.status(500).json({ error: 'Erro interno do servidor: ' + error.message });
     }
 });
 
