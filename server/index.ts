@@ -14,7 +14,13 @@ interface OpenRouterResponse {
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://eco-2-5yt8.vercel.app', // A URL DO SEU FRONTEND
+    methods: 'POST', // Permitir apenas o método POST
+    allowedHeaders: 'Content-Type,Authorization', // Permitir cabeçalhos específicos
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/api/chat', async (req: express.Request, res: express.Response) => {
