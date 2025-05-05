@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import Logo from '../../frontend/components/Logo';
+import Logo from '../../components/Logo';
 import PageTransition from '../../frontend/components/PageTransition';
 
 const MainMenu: React.FC = () => {
