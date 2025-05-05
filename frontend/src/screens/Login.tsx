@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Logo from './../../frontend/src/components/Logo';
+import Logo from 'components/Logo';
 import PageTransition from '../../components/PageTransition';
 
 const Login: React.FC = () => {
