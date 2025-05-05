@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Logo from '../../frontend/components/Logo';
-import PageTransition from '../../frontend/components/PageTransition';
+import Logo from '../../components/Logo';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
