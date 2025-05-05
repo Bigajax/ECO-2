@@ -15,9 +15,9 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const corsOptions = {
-    origin: 'https://eco-2-5yt8.vercel.app', // A URL DO SEU FRONTEND
-    methods: 'POST', // Permitir apenas o método POST
-    allowedHeaders: 'Content-Type,Authorization', // Permitir cabeçalhos específicos
+    origin: 'https://eco-2-lac.vercel.app', // A URL CORRETA DO SEU FRONTEND
+    methods: 'POST',
+    allowedHeaders: 'Content-Type,Authorization',
 };
 
 app.use(cors(corsOptions));
