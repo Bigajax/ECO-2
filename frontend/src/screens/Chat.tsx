@@ -51,7 +51,8 @@ const Chat: React.FC = () => {
         setNewMessage('');
 
         try {
-            const response = await fetch('http://localhost:3001/api/chat', {
+            const apiUrl = `${process.env.REACT_APP_BACKEND_API_URL}/api/chat`;
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
