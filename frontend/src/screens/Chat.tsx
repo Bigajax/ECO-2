@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Send, Menu, X, Plus, Mic, Image } from 'lucide-react';
-import MessageBubble from '../../components/MessageBubble';
+import MessageBubble from 'components/MessageBubble';
 
 const initialMessages = [
     {
