@@ -40,6 +40,8 @@ const Chat: React.FC = () => {
 
         if (!newMessage.trim()) return;
 
+        console.log("URL da API do Backend:", import.meta.env.VITE_BACKEND_URL); // Para depuração
+
         const userMessage: Message = {
             id: Date.now().toString(),
             text: newMessage,
@@ -51,7 +53,7 @@ const Chat: React.FC = () => {
         setNewMessage('');
 
         try {
-            const apiUrl = `${process.env.REACT_APP_BACKEND_API_URL}/api/chat`;
+            const apiUrl = `${import.meta.env.VITE_BACKEND_URL}/api/chat`;
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
