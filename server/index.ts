@@ -20,6 +20,7 @@ const corsOptions = {
     allowedHeaders: 'Content-Type,Authorization',
 };
 
+console.log('Configuração de CORS:', corsOptions); // LOG DA CONFIGURAÇÃO DO CORS
 app.use(cors(corsOptions));
 app.use(express.json());
 
