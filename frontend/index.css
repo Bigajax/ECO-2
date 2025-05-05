@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-pink-100 via-blue-100 to-pink-200 min-h-screen font-sans text-neutral-800;
+    @apply bg-gradient-to-br from-rose-200 via-blue-200 to-pink-300 min-h-screen font-sans text-neutral-800;
   }
 
   input, textarea {
