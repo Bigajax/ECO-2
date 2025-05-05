@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-rose-light via-white to-serenity-light min-h-screen font-sans text-neutral-800;
+    @apply bg-gradient-to-br from-pink-100 via-blue-100 to-pink-200 min-h-screen font-sans text-neutral-800;
   }
 
   input, textarea {
@@ -20,11 +20,11 @@
   .btn-primary {
     @apply bg-serenity-blue text-white py-3 px-6 rounded-apple font-medium hover:bg-serenity-dark transition-all duration-200 shadow-apple hover:shadow-apple-md;
   }
-  
+
   .btn-secondary {
     @apply bg-rose-quartz text-white py-3 px-6 rounded-apple font-medium hover:bg-rose-dark transition-all duration-200 shadow-apple hover:shadow-apple-md;
   }
-  
+
   .btn-ghost {
     @apply bg-transparent text-serenity-blue py-2 px-4 rounded-apple font-medium hover:bg-serenity-light hover:bg-opacity-30 transition-all duration-200;
   }
@@ -32,7 +32,7 @@
   .card {
     @apply bg-white bg-opacity-80 backdrop-blur-sm rounded-apple shadow-apple p-8;
   }
-  
+
   .container-app {
     @apply max-w-md mx-auto h-screen flex flex-col;
   }
